@@ -6,24 +6,18 @@ function MainPage() {
   const [multiplier, setMultiplier] = useState(1);
   const [boostTimer, setBoostTimer] = useState(0);
 
-  useEffect(() => {}, [boostTimer]);
+  useEffect(() => {
+    console.log(boostTimer);
+    boostTimer > 0 && setTimeout(() => setBoostTimer(boostTimer - 1), 1000);
+  }, [boostTimer]);
 
   const plusOne = () => {
     setCounter(counter + multiplier);
   };
 
   const fireOn = () => {
-    console.log("in");
-    setMultiplier(multiplier * 5);
-    setBoostTimer(boostTimer + 30);
-    console.log("something " + boostTimer);
-    for (let i = 0; i < 30; i++) {
-      console.log("Start");
-      setTimeout("", 1000);
-      setBoostTimer(29 - i);
-      console.log(boostTimer);
-    }
-    setMultiplier(1);
+    setBoostTimer(30);
+    setMultiplier(5);
   };
 
   return (
